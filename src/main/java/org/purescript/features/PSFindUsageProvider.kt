@@ -36,6 +36,7 @@ import org.purescript.parser.PSTokens.Companion.STRING_ESCAPED
 import org.purescript.parser.PSTokens.Companion.STRING_GAP
 import org.purescript.psi.PSForeignValueDeclaration
 import org.purescript.psi.PSModule
+import org.purescript.psi.PSPsiElement
 import org.purescript.psi.PSVarBinderImpl
 import org.purescript.psi.classes.PSClassDeclaration
 import org.purescript.psi.classes.PSClassMember
@@ -124,7 +125,7 @@ class PSFindUsageProvider : FindUsagesProvider {
 
     override fun getDescriptiveName(element: PsiElement): String {
         when (element) {
-            is PSValueDeclaration -> {
+            is PSPsiElement -> {
                 return "${element.module?.name}.${element.name}"
             }
             is PsiNamedElement -> {
